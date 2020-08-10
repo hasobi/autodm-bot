@@ -19,24 +19,24 @@ def start():
                     # prikitiw is the keyword
                     # if you want to turn off the case sensitive like: priktiw, Prikitiw, pRiKiTiw
                     # just use lower(message) and check it, but please remove the replace function line
-                    if "gp" in message:
-                        message = message.replace("gp", "gp")
+                    if "[gp]" in message:
+                        message = message.replace("[gp]", "[gp]")
                         if len(message) is not 0:
                             if dms[i]['media'] is None:
                                 print("DM will be posted")
                                 tw.post_tweet(message)
-                                # tw.delete_dm(id)
+                                tw.delete_dm(id)
                             else:
                                 print("DM will be posted with media")
                                 print(dms[i]['shorted_media_url'])
                                 tw.post_tweet_with_media(message, dms[i]['media'],dms[i]['shorted_media_url'], dms[i]['type'])
-                                # tw.delete_dm(id)
+                                tw.delete_dm(id)
                         else:
                             print("DM deleted because its empty..")
-                            # tw.delete_dm(id)
+                            tw.delete_dm(id)
                     else:
                         print("DM will be deleted because does not contains keyword..")
-                        # tw.delete_dm(id)
+                        tw.delete_dm(id)
 
             dms = list()
 
